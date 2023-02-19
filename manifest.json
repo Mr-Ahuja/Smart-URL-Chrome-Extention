@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+    "name": "Smart URL",
+    "version": "0.1",
+    
+    "permissions": [
+    "activeTab", "tabs"
+    ],
+    
+    "browser_action": {
+    "default_icon": "icon1.png",
+    "default_popup": "popup.html",
+    "default_title": "Smart URL"
+    },
+    
+    "content_scripts": [
+    {
+       "matches": [
+     "*://*/*"
+       ],
+       "js": ["content.js"]
+     }
+   ]
+}
