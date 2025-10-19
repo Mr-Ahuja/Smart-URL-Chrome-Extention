@@ -7,3 +7,6 @@
 - Category: Productivity
 - Privacy policy URL: include PRIVACY.md in repo or a hosted link
 
+
+Support page: https://Mr-Ahuja.github.io/Smart-URL-Chrome-Extention/
+
