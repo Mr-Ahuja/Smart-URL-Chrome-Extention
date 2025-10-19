@@ -75,3 +75,17 @@ Use the provided script to create a clean ZIP with only the required files.
 The ZIP includes: `manifest.json`, `popup.html`, `popup.js`, `icons/`, `PRIVACY.md`, `README.md`, `CHANGELOG.md`, `store-listing/`.
 
 
+
+## Support Page (GitHub Pages)
+A single-page support site is included under `docs/`.
+
+Enable GitHub Pages
+- Repo Settings → Pages
+- Source: Deploy from a branch
+- Branch: `master` (or your default), Folder: `/docs`
+- Save. Your site will be published to a URL like:
+  - `https://<your-username>.github.io/Smart-URL-Chrome-Extention/`
+
+Update CTAs
+- To change the email CTA, edit `docs/index.html` and update the `mailto:` link.
+- Profile CTA already points to `https://preetam.thechosenone.in/`.

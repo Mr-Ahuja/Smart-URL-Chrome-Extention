@@ -1,0 +1,108 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Copy URL Smartly – CURLs • Support</title>
+  <meta name="description" content="Support page for Copy URL Smartly – CURLs Chrome extension." />
+  <style>
+    :root{
+      --bg1:#0f1220; --bg2:#0a0b12; --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.12); --text:#f5f7fb; --muted:#a0a6b8;
+      --accent:#8b94ff; --success:#22c55e;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg1:#f7f9ff; --bg2:#eef2ff; --card:#ffffff; --border:#e5e7eb; --text:#0a0a0a; --muted:#52525b; --accent:#4f46e5; }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; display:grid; place-items:center; gap:24px;
+      background: radial-gradient(1000px 600px at 20% -20%, var(--bg1), transparent 60%),
+                  radial-gradient(1000px 600px at 120% 120%, var(--bg1), transparent 60%),
+                  linear-gradient(180deg, var(--bg2), var(--bg1));
+      color:var(--text); font: 16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      padding: 24px;
+    }
+    .card{
+      width:min(860px, 92vw); border:1px solid var(--border); background:var(--card);
+      border-radius:16px; padding:28px; backdrop-filter: blur(8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.25);
+    }
+    header{display:flex; align-items:center; gap:14px; margin-bottom:8px}
+    .logo{width:36px; height:36px}
+    .title{font-size:20px; font-weight:800; letter-spacing:.2px}
+    .lead{color:var(--muted); margin:6px 0 16px}
+    .grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:16px}
+    .pane{border:1px solid var(--border); border-radius:12px; padding:16px}
+    h3{margin:0 0 8px; font-size:14px; letter-spacing:.3px}
+    ul{margin:0; padding-left:18px}
+    .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
+    .btn{appearance:none; border:1px solid var(--accent); color:var(--accent); background:transparent; padding:10px 14px; border-radius:10px; font-weight:700; text-decoration:none;}
+    .btn:hover{background:color-mix(in srgb, var(--accent) 12%, transparent)}
+    .btn.primary{background:var(--accent); color:#fff}
+    .btn.primary:hover{filter:brightness(.96)}
+    .note{color:var(--muted); font-size:13px; margin-top:14px}
+    footer{margin-top:18px; color:var(--muted); font-size:13px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px}
+    footer a{color:inherit}
+    .mono{font-family: ui-monospace,SFMono-Regular,Consolas,Monaco,monospace}
+    @media (max-width:560px){ .lead{font-size:14px} }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <header>
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true">
+        <style>.s{stroke:#fff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;fill:none}</style>
+        <circle class="s" cx="128" cy="128" r="96"/>
+        <path class="s" d="M96 98 h34 a20 20 0 0 0 0-40 h-22"/>
+        <path class="s" d="M160 158 h-34 a20 20 0 0 0 0 40 h22"/>
+        <path class="s" d="M104 128 H152"/>
+      </svg>
+      <div class="title">Copy URL Smartly – CURLs</div>
+    </header>
+    <p class="lead">Support, help, and contact for the CURLs Chrome extension. Quickly copy a clean, labeled link to your clipboard in HTML and plain text.</p>
+
+    <div class="grid">
+      <section class="pane">
+        <h3>What CURLs Does</h3>
+        <ul>
+          <li>One‑click copy of active tab as HTML + plain text</li>
+          <li>Auto‑copy on popup open</li>
+          <li>Custom title with visual copy feedback</li>
+          <li>Privacy‑friendly: 100% local, minimal permissions</li>
+        </ul>
+      </section>
+      <section class="pane">
+        <h3>Get Help</h3>
+        <ul>
+          <li>Install unpacked via <span class="mono">chrome://extensions</span></li>
+          <li>Reload to pick updates; check “Errors” if anything fails</li>
+          <li>Open an issue on GitHub for bug reports</li>
+        </ul>
+      </section>
+      <section class="pane">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="https://github.com/Mr-Ahuja/Smart-URL-Chrome-Extention" target="_blank" rel="noopener">Repository</a></li>
+          <li><a href="../PRIVACY.md" target="_blank" rel="noopener">Privacy Policy</a></li>
+          <li><a href="../README.md" target="_blank" rel="noopener">README</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="cta">
+      <a class="btn primary" href="https://preetam.thechosenone.in/" target="_blank" rel="noopener">Visit Profile</a>
+      <a class="btn" href="mailto:preetam@thechosenone.in">Email Support</a>
+      <a class="btn" href="https://github.com/Mr-Ahuja/Smart-URL-Chrome-Extention/issues" target="_blank" rel="noopener">GitHub Issues</a>
+    </div>
+
+    <p class="note">If you prefer a different contact email, update the mailto link in <span class="mono">docs/index.html</span>.</p>
+
+    <footer>
+      <span>The Chosen One – <a href="https://preetam.thechosenone.in/" target="_blank" rel="noopener">Preetam Ahuja</a></span>
+      <span>&copy; <script>document.write(new Date().getFullYear())</script></span>
+    </footer>
+  </main>
+</body>
+</html>
