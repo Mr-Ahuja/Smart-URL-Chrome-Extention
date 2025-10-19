@@ -24,7 +24,7 @@
       --vh: 1vh;             /* dynamic viewport unit */
     }
     * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; background: radial-gradient(1200px 800px at 70% 20%, #152030 0%, #0b0f14 60%); color: #e6eef8; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; overscroll-behavior: none; min-height: 100dvh; display: grid; place-items: center; }
+    html, body { height: 100%; margin: 0; background: radial-gradient(1200px 800px at 70% 20%, #152030 0%, #0b0f14 60%); color: #e6eef8; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; overscroll-behavior: none; }
 
     /* Background gradient similar to sample */
     body::before {
@@ -62,13 +62,21 @@
       .hero-card { padding: 18px; }
       .btn { padding: 12px; font-size: 14px; }
     }
-  </style>
+      :root { --vh: 1vh; }
+    .page { min-height: calc(var(--vh) * 100); display: flex; flex-direction: column; }
+    @supports (min-height: 100dvb) { .page { min-height: 100dvb; } }
+    .hero { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+    .site-footer { color: var(--muted,#95a3b8); font-size: 12px; text-align: center; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); }    @media (max-width: 600px) { .card { min-height: 64vh; padding: 28px 18px; display:flex; flex-direction:column; gap:14px; } .lead { margin:0 0 22px; line-height:1.5; } .cta { gap: 12px; } }\n</style>
 </head>
 <body>\n  <canvas id="constellation"></canvas>\n  <div class="page">\n<section class="hero">
     <div class="hero-card">
       <div class="logo" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="96" height="96">
-          <style>.s{stroke:#fff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;fill:none}</style>
+          <style>.s{stroke:#fff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;fill:none}    :root { --vh: 1vh; }
+    .page { min-height: calc(var(--vh) * 100); display: flex; flex-direction: column; }
+    @supports (min-height: 100dvb) { .page { min-height: 100dvb; } }
+    .hero { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+    .site-footer { color: var(--muted,#95a3b8); font-size: 12px; text-align: center; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); }    @media (max-width: 600px) { .card { min-height: 64vh; padding: 28px 18px; display:flex; flex-direction:column; gap:14px; } .lead { margin:0 0 22px; line-height:1.5; } .cta { gap: 12px; } }\n</style>
           <circle class="s" cx="128" cy="128" r="96"/>
           <path class="s" d="M96 98 h34 a20 20 0 0 0 0-40 h-22"/>
           <path class="s" d="M160 158 h-34 a20 20 0 0 0 0 40 h22"/>
@@ -154,6 +162,7 @@
   </script>
 </body>
 </html>
+
 
 
 
