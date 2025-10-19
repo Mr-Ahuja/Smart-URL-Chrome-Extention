@@ -1,0 +1,9 @@
+﻿{
+  "name": "copy-url-smartly-curls",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Chrome extension: copy a clean, labeled link of the current tab to clipboard (HTML + plain text).",
+  "scripts": {
+    "package": "powershell -ExecutionPolicy Bypass -File scripts/package.ps1"
+  }
+}

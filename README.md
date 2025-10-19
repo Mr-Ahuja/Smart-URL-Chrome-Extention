@@ -65,47 +65,13 @@ If you tweak the SVG and want fresh PNGs:
 - Update `CHANGELOG.md`
 
 ## Packaging for the Chrome Web Store
-You need a ZIP of the extension contents (no `.git` or local tooling):
+Use the provided script to create a clean ZIP with only the required files.
 
-Windows PowerShell example:
+- npm run package
+  - This runs `scripts/package.ps1` and outputs `dist/curls-<version>.zip` using the version from `manifest.json`.
+- Or run directly:
+  - powershell -ExecutionPolicy Bypass -File scripts/package.ps1
 
-- Create a clean folder (optional):
-  - `New-Item -Type Directory -Force dist | Out-Null`
-- Zip only required files (manifest, popup, scripts, icons, docs):
-  - `Compress-Archive -DestinationPath dist/curls-1.0.0.zip -Force -Path @("manifest.json","popup.html","popup.js","icons","PRIVACY.md","README.md","CHANGELOG.md","store-listing")`
+The ZIP includes: `manifest.json`, `popup.html`, `popup.js`, `icons/`, `PRIVACY.md`, `README.md`, `CHANGELOG.md`, `store-listing/`.
 
-Notes:
-- Exclude `.git`, `scripts` (unless you want to include the store listing folder only), and any temp files
-- The Web Store accepts ZIP uploads; no build step is needed
 
-## Publishing Steps (Chrome Web Store Developer Dashboard)
-1) Create a developer account at the Chrome Web Store Developer Dashboard
-   - Pay the one‑time registration fee if you haven’t already
-2) Click “New item” and upload your ZIP (e.g., `dist/curls-1.0.0.zip`)
-3) Fill Listing Details
-   - Title: `Copy URL Smartly – CURLs`
-   - Short description (<=132 chars): “Copy a clean, labeled link of the current tab (HTML + plain text).”
-   - Detailed description: use `store-listing/description.txt` content
-   - Category: Productivity
-   - Icons: already included via the ZIP (`icons/icon128.png` required)
-   - Screenshots: add at least one (1280×800 or 640×400); include the popup
-   - Privacy policy: link to your hosted `PRIVACY.md` or GitHub repo file
-4) Permissions Review
-   - Declared: `activeTab`, `tabs` (minimal)
-   - Justification: needed to read active tab’s URL/title when the popup opens
-5) Save Draft and Run Checks
-   - Fix any warnings surfaced by the dashboard
-6) Submit for Review
-   - Optionally select visibility (public/unlisted) and regions
-   - Expect review to take from hours to a few days
-7) After Approval
-   - Share the store link or set to public
-   - For updates, bump `version` in `manifest.json`, re‑zip, and submit a new version
-
-## Roadmap / Ideas
-- Optional domain toggle (append/remove domain)
-- Configurable auto‑copy behavior
-- Keyboard shortcut to copy without opening the popup
-
-## Support
-Open an issue at the repository.
