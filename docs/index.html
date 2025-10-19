@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Copy URL Smartly – CURLs • Support</title>
+  <title>CURLs • Support</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <meta name="description" content="Support page for Copy URL Smartly – CURLs Chrome extension." />
   <style>
     :root{
-      --bg1:#0f1220; --bg2:#0a0b12; --card: rgba(255,255,255,.06);
-      --border: rgba(255,255,255,.12); --text:#f5f7fb; --muted:#a0a6b8;
-      --accent:#8b94ff; --pink:#f9a8d4; --success:#22c55e;
+      --bg1:#0f1220; --bg2:#0a0b12; --text:#f5f7fb; --muted:#a0a6b8;
+      --accent:#8b94ff; --pink:#f9a8d4; --green:#22c55e; --line:#9fb3cc33;
     }
     @media (prefers-color-scheme: light){
-      :root{ --bg1:#f7f9ff; --bg2:#eef2ff; --card:#ffffff; --border:#e5e7eb; --text:#0a0a0a; --muted:#52525b; --accent:#4f46e5; --pink:#d946ef; }
+      :root{ --bg1:#f7f9ff; --bg2:#eef2ff; --text:#0a0a0a; --muted:#52525b; --accent:#4f46e5; --pink:#d946ef; --line:#4f6b8a33; }
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html,body{height:100%; overflow:hidden}
     body{
       margin:0; color:var(--text);
       font: 16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
@@ -26,47 +26,33 @@
     a{ color: var(--pink); text-decoration: none; }
     a:hover{ text-decoration: underline; }
 
-    /* Landing hero with stars */
-    .landing{ position:relative; display:grid; place-items:center; padding: 64px 16px 24px; overflow:hidden; }
-    #stars{ position:absolute; inset:0; width:100%; height:100%; display:block; }
-    .hero{ position:relative; z-index:1; text-align:center; display:flex; flex-direction:column; gap:16px; align-items:center; }
-    .hero .logo{ opacity:.8 }
-    .hero h1{ margin:0; font-size:42px; letter-spacing:.3px }
-    .hero .lead{ color:var(--muted); max-width: 780px; margin: 0 auto; }
-    .cta{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
-    .btn{ appearance:none; border:1px solid var(--accent); color:var(--accent); background:transparent; padding:10px 14px; border-radius:12px; font-weight:700; text-decoration:none; }
-    .btn:hover{ background:color-mix(in srgb, var(--accent) 12%, transparent) }
+    /* Fullscreen constellation */
+    #constellation{ position:fixed; inset:0; width:100%; height:100%; display:block; z-index:0 }
+
+    /* Center hero */
+    .hero{ position:relative; z-index:1; height:100svh; min-height:100vh; display:grid; place-items:center; text-align:center; padding:24px }
+    .hero-inner{ display:flex; flex-direction:column; gap:16px; align-items:center; max-width:min(90vw, 820px) }
+    .logo{ opacity:.9; filter:drop-shadow(0 2px 12px rgba(255,255,255,.12)) }
+    h1{ margin:0; font-size:42px; letter-spacing:.3px }
+    .lead{ color:var(--muted); margin:0; }
+    .cta{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:6px }
+
+    .btn{ appearance:none; border:1px solid var(--accent); color:var(--accent); background:transparent; padding:10px 18px; border-radius:9999px; font-weight:700; text-decoration:none; display:inline-flex; gap:8px; align-items:center }
+    .btn:hover{ background:color-mix(in srgb, var(--accent) 12%, transparent); text-decoration:none }
     .btn.primary{ background:var(--accent); color:#fff }
     .btn.primary:hover{ filter:brightness(.96) }
 
-    /* Main card */
-    .wrap{ display:grid; place-items:center; padding: 0 24px 32px; }
-    .card{
-      width:min(980px, 92vw); border:1px solid var(--border); background:var(--card);
-      border-radius:16px; padding:28px; backdrop-filter: blur(8px);
-      box-shadow: 0 20px 60px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.25);
-    }
-    header{display:flex; align-items:center; gap:14px; margin-bottom:8px; justify-content:center}
-    .mini-logo{width:36px; height:36px}
-    .title{font-size:20px; font-weight:800; letter-spacing:.2px}
-    .grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:16px; margin-top: 8px;}
-    .pane{border:1px solid var(--border); border-radius:12px; padding:16px}
-    h3{margin:0 0 8px; font-size:14px; letter-spacing:.3px}
-    ul{margin:0; padding-left:18px}
-    .note{color:var(--muted); font-size:13px; margin-top:14px}
-    footer{margin-top:18px; color: var(--muted); font-size:13px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px}
-    footer a{ color: var(--pink); }
+    .site-footer{ position:fixed; left:0; right:0; bottom:10px; text-align:center; color:var(--muted); font-size:13px; z-index:1; padding:0 12px }
 
-    @media (max-width:560px){ .hero h1{font-size:32px} .lead{font-size:14px} }
+    @media (max-width:560px){ h1{font-size:28px} .lead{font-size:14px} }
   </style>
 </head>
 <body>
-  <div id="landing" class="landing">
-    <canvas id="stars"></canvas>
-    <div class="hero">
+  <canvas id="constellation"></canvas>
+  <section class="hero">
+    <div class="hero-inner">
       <div class="logo" aria-hidden="true">
-        <!-- White monogram variant -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="96" height="96" style="opacity:.9;filter:drop-shadow(0 2px 12px rgba(255,255,255,.12))">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="96" height="96">
           <style>.s{stroke:#fff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;fill:none}</style>
           <circle class="s" cx="128" cy="128" r="96"/>
           <path class="s" d="M96 98 h34 a20 20 0 0 0 0-40 h-22"/>
@@ -75,94 +61,78 @@
         </svg>
       </div>
       <h1>CURLs Support</h1>
-      <p class="lead">Copy URL Smartly – CURLs helps you turn clunky, tracker‑stuffed URLs into clean, readable links for chats, docs, and email.</p>
+      <p class="lead">Turn clunky, tracker‑stuffed URLs into clean, readable links for chats, docs, and email.</p>
       <div class="cta">
         <a class="btn primary" href="https://preetam.thechosenone.in/" target="_blank" rel="noopener">Visit Profile</a>
         <a class="btn" href="mailto:preetam@thechosenone.in">Email Support</a>
         <a class="btn" href="https://github.com/Mr-Ahuja/Smart-URL-Chrome-Extention/issues" target="_blank" rel="noopener">GitHub Issues</a>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="wrap">
-    <main class="card" role="main">
-      <header>
-        <svg class="mini-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true">
-          <style>.s{stroke:#fff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;fill:none}</style>
-          <circle class="s" cx="128" cy="128" r="96"/>
-          <path class="s" d="M96 98 h34 a20 20 0 0 0 0-40 h-22"/>
-          <path class="s" d="M160 158 h-34 a20 20 0 0 0 0 40 h22"/>
-          <path class="s" d="M104 128 H152"/>
-        </svg>
-        <div class="title">Copy URL Smartly – CURLs</div>
-      </header>
-
-      <div class="grid">
-        <section class="pane">
-          <h3>What CURLs Does</h3>
-          <ul>
-            <li>One‑click copy of active tab as HTML + plain text</li>
-            <li>Auto‑copy on popup open</li>
-            <li>Custom title with visual copy feedback</li>
-            <li>Privacy‑friendly: 100% local, minimal permissions</li>
-          </ul>
-        </section>
-        <section class="pane">
-          <h3>Get Help</h3>
-          <ul>
-            <li>Install unpacked via <span style="font-family:ui-monospace,monospace">chrome://extensions</span></li>
-            <li>Reload to pick updates; check “Errors” if anything fails</li>
-            <li>Open an issue on GitHub for bug reports</li>
-          </ul>
-        </section>
-        <section class="pane">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="https://github.com/Mr-Ahuja/Smart-URL-Chrome-Extention" target="_blank" rel="noopener">Repository</a></li>
-            <li><a href="../PRIVACY.md" target="_blank" rel="noopener">Privacy Policy</a></li>
-            <li><a href="../README.md" target="_blank" rel="noopener">README</a></li>
-          </ul>
-        </section>
-      </div>
-
-      <footer>
-        <span>The Chosen One – <a href="https://preetam.thechosenone.in/" target="_blank" rel="noopener">Preetam Ahuja</a></span>
-        <span>&copy; <script>document.write(new Date().getFullYear())</script></span>
-      </footer>
-    </main>
-  </div>
+  <footer class="site-footer">CURLs by The Chosen One - <a href="https://preetam.thechosenone.in/" target="_blank" rel="noopener">Preetam Ahuja</a></footer>
 
   <script>
-    // Simple starfield animation inspired by your landing aesthetic
+    // Responsive Constellation Animation
     (function(){
-      const canvas = document.getElementById('stars');
+      const canvas = document.getElementById('constellation');
       const ctx = canvas.getContext('2d');
-      let w, h, stars = [];
-      function resize(){ w = canvas.width = canvas.clientWidth; h = canvas.height = canvas.clientHeight; }
-      window.addEventListener('resize', resize); resize();
-      const COUNT = 120; // modest, performant
+      let pr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      let w, h, points = [], maxDist, count;
+
+      function size(){
+        const rect = canvas.getBoundingClientRect();
+        w = Math.floor(rect.width); h = Math.floor(rect.height);
+        pr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+        canvas.width = Math.floor(w * pr); canvas.height = Math.floor(h * pr);
+        ctx.setTransform(pr, 0, 0, pr, 0, 0);
+        // particle density tuned for performance
+        const area = w * h; // px
+        count = Math.max(60, Math.min(160, Math.floor(area / 14000)));
+        maxDist = Math.max(80, Math.min(180, Math.sqrt(area) / 6));
+        init();
+      }
+
       function init(){
-        stars = Array.from({length: COUNT}, () => ({
-          x: Math.random()*w,
-          y: Math.random()*h,
-          r: Math.random()*1.2+0.3,
-          a: Math.random()*Math.PI*2,
-          s: Math.random()*0.6+0.2
+        points = Array.from({length: count}, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          r: Math.random() * 1.2 + 0.4
         }));
       }
+
       function step(){
         ctx.clearRect(0,0,w,h);
-        for(const st of stars){
-          st.a += st.s*0.01;
-          const tw = 0.5 + 0.5*Math.sin(st.a);
-          ctx.globalAlpha = 0.3 + 0.7*tw;
-          ctx.fillStyle = '#e6eef8';
-          ctx.beginPath(); ctx.arc(st.x, st.y, st.r, 0, Math.PI*2); ctx.fill();
+        // draw connections
+        for (let i = 0; i < points.length; i++){
+          const p = points[i];
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+          // dots
+          ctx.globalAlpha = 0.8; ctx.fillStyle = '#e6eef8';
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+          // lines to neighbors within range (limited checks)
+          for (let j = i+1; j < points.length && j < i + 35; j++){
+            const q = points[j];
+            const dx = p.x - q.x, dy = p.y - q.y;
+            const d2 = dx*dx + dy*dy;
+            if (d2 < maxDist*maxDist){
+              const a = 1 - (Math.sqrt(d2)/maxDist);
+              ctx.globalAlpha = Math.min(0.6, a * 0.8);
+              ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--line') || '#9fb3cc33';
+              ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+            }
+          }
         }
         ctx.globalAlpha = 1;
         requestAnimationFrame(step);
       }
-      init(); step();
+
+      const ro = new ResizeObserver(size); ro.observe(document.body);
+      size(); step();
     })();
   </script>
 </body>

@@ -1,0 +1,9 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t d">
+  <title id="t">CURLs Monogram</title>
+  <desc id="d">White S-link inside a thin ring.</desc>
+  <style>.s{stroke:#fff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;fill:none}</style>
+  <circle class="s" cx="128" cy="128" r="96"/>
+  <path class="s" d="M96 98 h34 a20 20 0 0 0 0-40 h-22"/>
+  <path class="s" d="M160 158 h-34 a20 20 0 0 0 0 40 h22"/>
+  <path class="s" d="M104 128 H152"/>
+</svg>
