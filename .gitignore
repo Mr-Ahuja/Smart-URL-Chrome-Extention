@@ -1,0 +1,21 @@
+﻿# Dependencies
+node_modules/
+
+# Build outputs
+.dist/
+dist/
+.tmp-icons/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Archives
+*.zip
+
+# Logs
+*.log
+
+# Editors/IDE
+.vscode/
+.idea/

@@ -23,7 +23,7 @@ $include = @(
   'PRIVACY.md',
   'README.md',
   'CHANGELOG.md',
-  'store-listing'
+  'store-listing','privacy.md'
 ) | Where-Object { Test-Path $_ }
 
 if ($include.Count -eq 0) { throw 'Nothing to package. Check paths.' }
@@ -31,3 +31,4 @@ if ($include.Count -eq 0) { throw 'Nothing to package. Check paths.' }
 if (Test-Path $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
 Compress-Archive -Path $include -DestinationPath $zipPath -Force
 Write-Host "Created package: $zipPath"
+
