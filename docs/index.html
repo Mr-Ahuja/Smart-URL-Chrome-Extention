@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>CURLs • Support</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +24,7 @@
       --vh: 1vh;             /* dynamic viewport unit */
     }
     * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; touch-action: manipulation; overflow: hidden; }
+    html, body { height: 100%; margin: 0; background: radial-gradient(1200px 800px at 70% 20%, #152030 0%, #0b0f14 60%); color: var(--text, #e6eef8); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; overscroll-behavior: none; }
 
     /* Background gradient similar to sample */
     body::before {
@@ -37,11 +37,11 @@
     a:hover { text-decoration: underline; }
 
     /* Fullscreen constellation canvas */
-    #constellation { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+    #constellation { position: fixed; inset: 0; width: 100vw; height: 100dvh; display: block; z-index: 0; }
 
     /* Centered hero block (glass + rounded) */
-    .hero { position: relative; z-index: 1; height: 100dvh; height: calc(var(--vh) * 100); display: grid; place-items: center; padding: 24px; }
-    .hero-card { background: rgba(10,14,20,0.45); border: 1px solid #1f2a38; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.35); backdrop-filter: blur(10px); padding: 24px; width: min(92vw, 860px); display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+    .hero { display: grid; place-items: center; padding: 24px 16px; }
+    .hero-card { background: rgba(10,14,20,0.45); border: 1px solid #1f2a38; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.35); backdrop-filter: blur(10px); padding: 24px; width: min(80vw, 860px); display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
 
     .logo { opacity: .85; filter: drop-shadow(0 2px 12px rgba(255,255,255,.08)); }
     h1 { margin: 0; font-size: 28px; letter-spacing: .5px; }
@@ -64,10 +64,7 @@
     }
   </style>
 </head>
-<body>
-  <canvas id="constellation"></canvas>
-
-  <section class="hero">
+<body>\n  <canvas id="constellation"></canvas>\n  <div class="page">\n<section class="hero">
     <div class="hero-card">
       <div class="logo" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="96" height="96">
@@ -157,3 +154,4 @@
   </script>
 </body>
 </html>
+
