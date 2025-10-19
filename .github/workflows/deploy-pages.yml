@@ -2,10 +2,8 @@
 
 on:
   push:
-    branches: [ master ]
-    paths:
-      - 'docs/**'
-      - '.github/workflows/deploy-pages.yml'
+
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -25,7 +23,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
         with:
-          enablement: true
+          enablement: false
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -40,4 +38,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
 
