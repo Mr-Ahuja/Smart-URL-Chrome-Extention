@@ -90,5 +90,6 @@ Update CTAs
 - To change the email CTA, edit `docs/index.html` and update the `mailto:` link.
 - Profile CTA already points to `https://preetam.thechosenone.in/`.
 
-Support page: https://Mr-Ahuja.github.io/Smart-URL-Chrome-Extention/
+Support page: https://curls.thechosenone.in/
+
 
