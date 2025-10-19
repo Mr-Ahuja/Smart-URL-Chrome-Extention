@@ -6,3 +6,4 @@ Smart URL does not collect, store, transmit, or share any personal data.
 - The extension only reads the active tab’s URL and title at the moment you open the popup to construct a link for your clipboard.
 
 Contact: Open an issue on the repository if you have questions.
+
