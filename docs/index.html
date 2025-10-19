@@ -1,0 +1,159 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CURLs • Support</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta name="description" content="Support page for Copy URL Smartly – CURLs Chrome extension." />
+  <style>
+    :root {
+      --bg: #0b0f14;         /* base background */
+      --panel: #121821;      /* card/panel */
+      --text: #e6eef8;       /* primary text */
+      --muted: #95a3b8;      /* secondary text */
+      --accent: #2e8cff;     /* brand accent */
+      --danger: #ff4d4f;
+      --success: #29c26a;
+      --pink: #f9a8d4;       /* link color (request) */
+      --line: #1f2a3833;     /* constellation line */
+      --vh: 1vh;             /* dynamic viewport unit */
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; touch-action: manipulation; overflow: hidden; }
+
+    /* Background gradient similar to sample */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(1200px 800px at 70% 20%, #152030 0%, #0b0f14 60%);
+    }
+
+    a { color: var(--pink); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Fullscreen constellation canvas */
+    #constellation { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+
+    /* Centered hero block (glass + rounded) */
+    .hero { position: relative; z-index: 1; height: 100dvh; height: calc(var(--vh) * 100); display: grid; place-items: center; padding: 24px; }
+    .hero-card { background: rgba(10,14,20,0.45); border: 1px solid #1f2a38; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.35); backdrop-filter: blur(10px); padding: 24px; width: min(92vw, 860px); display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+
+    .logo { opacity: .85; filter: drop-shadow(0 2px 12px rgba(255,255,255,.08)); }
+    h1 { margin: 0; font-size: 28px; letter-spacing: .5px; }
+    .lead { color: var(--muted); margin: 0; max-width: 62ch; }
+
+    .cta { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .btn { cursor: pointer; border: 1px solid #1e2733; background: #0f151d; color: var(--text); padding: 12px 16px; border-radius: 999px; font-size: 15px; transition: 0.15s ease; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; text-decoration: none !important; }
+    .btn:hover { border-color: #2a3545; background: #131b26; text-decoration: none !important; }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn.danger { background: var(--danger); border-color: var(--danger); color: #fff; }
+    .btn.mellange { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #0b0f14; border-color: #ffffff22; }
+
+    .site-footer { position: fixed; left: 0; right: 0; bottom: calc(8px + env(safe-area-inset-bottom)); text-align: center; color: var(--muted); font-size: 13px; z-index: 1; padding: 0 12px; }
+
+    @media (max-width: 560px) {
+      h1 { font-size: 24px; }
+      .lead { font-size: 14px; }
+      .hero-card { padding: 18px; }
+      .btn { padding: 12px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="constellation"></canvas>
+
+  <section class="hero">
+    <div class="hero-card">
+      <div class="logo" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="96" height="96">
+          <style>.s{stroke:#fff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;fill:none}</style>
+          <circle class="s" cx="128" cy="128" r="96"/>
+          <path class="s" d="M96 98 h34 a20 20 0 0 0 0-40 h-22"/>
+          <path class="s" d="M160 158 h-34 a20 20 0 0 0 0 40 h22"/>
+          <path class="s" d="M104 128 H152"/>
+        </svg>
+      </div>
+      <h1>CURLs Support</h1>
+      <p class="lead">Turn clunky, tracker‑stuffed URLs into clean, readable links for chats, docs, and email.</p>
+      <div class="cta">
+        <a class="btn mellange" href="https://preetam.thechosenone.in/" target="_blank" rel="noopener"><span class="material-icons" style="font-size:18px">auto_awesome</span>Visit Profile</a>
+        <a class="btn" href="mailto:preetam@thechosenone.in"><span class="material-icons" style="font-size:18px">mail</span>Email Support</a>
+        <a class="btn" href="https://github.com/Mr-Ahuja/Smart-URL-Chrome-Extention/issues" target="_blank" rel="noopener"><span class="material-icons" style="font-size:18px">bug_report</span>GitHub Issues</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">CURLs by The Chosen One - <a href="https://preetam.thechosenone.in/" target="_blank" rel="noopener">Preetam Ahuja</a></footer>
+
+  <script>
+    // dynamic viewport height fix (mobile white strip)
+    function setVh() { document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px'); }
+    window.addEventListener('resize', setVh); window.addEventListener('orientationchange', setVh); setVh();
+
+    // Constellation animation
+    (function(){
+      const canvas = document.getElementById('constellation');
+      const ctx = canvas.getContext('2d');
+      let pr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      let w, h, points = [], maxDist, count;
+
+      function size(){
+        w = Math.max(1, Math.floor(window.innerWidth));
+        h = Math.max(1, Math.floor(window.innerHeight));
+        pr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+        canvas.width = Math.floor(w * pr); canvas.height = Math.floor(h * pr);
+        ctx.setTransform(pr, 0, 0, pr, 0, 0);
+        const area = w * h;
+        count = Math.max(60, Math.min(160, Math.floor(area / 14000)));
+        maxDist = Math.max(80, Math.min(180, Math.sqrt(area) / 6));
+        init();
+      }
+
+      function init(){
+        points = Array.from({length: count}, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          r: Math.random() * 1.2 + 0.4
+        }));
+      }
+
+      function step(){
+        ctx.clearRect(0,0,w,h);
+        for (let i = 0; i < points.length; i++){
+          const p = points[i];
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+          // dots
+          ctx.globalAlpha = 0.85; ctx.fillStyle = '#e6eef8';
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+          // lines (limited neighbor checks)
+          for (let j = i+1; j < points.length && j < i + 35; j++){
+            const q = points[j];
+            const dx = p.x - q.x, dy = p.y - q.y; const d2 = dx*dx + dy*dy;
+            if (d2 < maxDist*maxDist){
+              const a = 1 - (Math.sqrt(d2)/maxDist);
+              ctx.globalAlpha = Math.min(0.6, a * 0.8);
+              ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--line') || '#1f2a3833';
+              ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+            }
+          }
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(step);
+      }
+
+      size(); step();
+      window.addEventListener('resize', size);
+      window.addEventListener('orientationchange', size);
+    })();
+  </script>
+</body>
+</html>

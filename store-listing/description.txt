@@ -1,0 +1,15 @@
+﻿Copy URL Smartly - CURLs helps you quickly copy a clean, labeled link from your current tab to your clipboard in both HTML and plain-text formats. It automatically includes the site’s domain for context and supports custom titles.
+
+Key features:
+- One-click copy of active tab as HTML <a> + plain text
+- Auto-includes the domain (e.g., example.com)
+- Optional custom title input
+- Minimal permissions; no background scripts
+- No data collection; fully local
+
+How to use:
+1) Click the extension icon to auto-copy the current tab’s link.
+2) Optionally enter a custom title and click Copy.
+
+Support and feedback: https://github.com/Mr-Ahuja/Smart-URL-Chrome-Extention
+

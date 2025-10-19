@@ -1,67 +1,78 @@
-<html>
-    <body>
-        <div class="background">
-            <center>
-            <text>
-                <input type="text" id="customTitle" value="Custom Title">
-              <button id = "customTitleButton" class="clipboard">OK</button>
-              <p id = "urlLabel">URL</p>
-                <br>
-               <a href="https://github.com/Mr-Ahuja/Smart-URL-Chrome-Extention/edit/main/popup.html">Made by : Preetam Ahuja</a>
-            </center>
-            </div>
-            <script src="content.js"></script>
-            <style>
-                
-body {
-  padding: 20px;
-  margin: 0;
-  color: #000;
-  font-family: sans-serif;
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Copy URL Smartly - CURLs</title>
+    <link rel="icon" href="icons/icon32.png" />
+    <style>
+      :root {
+        --text: #f5f5f5;
+        --muted: #a1a1aa;
+        --primary: #6366f1;
+        --success: #16a34a; /* melange green */
+        --border: rgba(127,127,127,.25);
+        --surface: rgba(30,30,30,.6);
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --text:#0a0a0a; --muted:#52525b; --primary:#4f46e5; --success:#16a34a; --border:#e5e7eb; --surface: rgba(255,255,255,.8);
+        }
+      }
+      :root { color-scheme: dark light; }
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body { width: 320px; }
+      body {
+        margin: 0; padding: 8px;
+        background: transparent; /* fully transparent outer */
+        color: var(--text);
+        font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 10px; display:flex; flex-direction:column; gap:8px; align-items: stretch; width: 100%;
+        backdrop-filter: blur(6px);
+      }
+      header { display:flex; align-items:center; gap:8px; }
+      header .name { font-weight: 700; letter-spacing: .2px; font-size: 14px; }
+      img.icon { width:20px; height:20px; filter: invert(1); }
+      @media (prefers-color-scheme: light) { img.icon { filter: none; } }
 
-}
+      .row { display:flex; gap:8px; align-items:center; width:100%; }
+      .input { flex:1; padding: 8px 10px; border-radius: 10px; border:1px solid var(--border); background: rgba(127,127,127,.08); color: var(--text); outline: none; min-width: 0; }
+      .input::placeholder { color: var(--muted); }
+      .button { padding: 8px 12px; border-radius: 10px; border: 1px solid var(--primary); background: transparent; color: var(--primary); font-weight: 600; cursor: pointer; transition: background-color .15s ease, color .15s ease, border-color .15s ease; white-space: nowrap; }
+      .button:hover { background: rgba(99,102,241,.08); }
+      .button.copied { background: var(--success); border-color: var(--success); color: #fff; }
 
-.background {
-    border: 4px solid black;
-    background-image: linear-gradient(135deg, #fff 10%, #fff 100%);
-    height: 150px;
-    width: 400px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+      #status { font-weight: 600; font-size: 12px; color: var(--muted); min-height: 16px; }
+      footer { color: var(--muted); font-size: 12px; }
+      footer a { color: inherit; text-decoration: none; border-bottom: 1px dotted currentColor; }
+      footer a:hover { color: var(--text); }
+    </style>
+  </head>
+  <body>
+    <section class="card">
+      <header>
+        <img class="icon" src="icons/smart-url-white.png" alt="CURLs icon" />
+        <div class="name">Copy URL Smartly - CURLs</div>
+      </header>
 
-  .clipboard {
-    padding: 10px;
-    margin: 15px;
-    border-radius: 3px;
-    cursor: pointer;
-    color: #000;
-    font-family:  Monospace;
-    font-size: 16px;
-    position: relative;
-    top: 0;
-    transition: all 0.2s ease;
-  }
+      <div class="row">
+        <input class="input" id="customTitle" aria-label="Custom title" placeholder="Custom title" />
+        <button id="customTitleButton" class="button" title="Copy with custom title">Copy</button>
+      </div>
+      <div id="status" aria-live="polite"></div>
 
-#customTitle{
-    padding: 10px;
-    margin: 15px;
-    border-radius: 3px;
-    cursor: pointer;
-    color: #000;
-    font-family:  Monospace;
-    font-size: 16px;
-    position: relative;
-    top: 0;
-    transition: all 0.2s ease;
-  }
+      <footer>
+        The Chosen One - <a href="https://preetam.thechosenone.in/" target="_blank" rel="noopener noreferrer">Preetam Ahuja</a>
+      </footer>
+    </section>
 
-  p {
-    font-weight: 700;
-  }
-
-            </style>
-    </body>
+    <script src="popup.js"></script>
+  </body>
 </html>
+
+
